@@ -14,6 +14,7 @@
     <header class="main">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <h1> <%= @page_title %></h1>
+      <p class="time"> <%= @time.to_formatted_s(:time)  %> </p>
     </header>
     <section class="content">
       <nav class="side_nav">
