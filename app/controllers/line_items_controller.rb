@@ -4,6 +4,7 @@ class LineItemsController < ApplicationController
   before_action :set_line_item, only: %i[ show edit update destroy ]
   before_action :initialize_visit_counter
   before_action :increment_visit_counter
+  before_action :get_time
 
   # GET /line_items or /line_items.json
   def index
@@ -26,11 +27,11 @@ class LineItemsController < ApplicationController
   # POST /line_items or /line_items.json
   def create
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: "Item was successfully added to the cart." }
+        format.html { redirect_to @line_item.cart }
         format.json { render :show, status: :created, location: @line_item }
         session[:visit_counter] = 0
       else
@@ -71,6 +72,6 @@ class LineItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id)
     end
 end

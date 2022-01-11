@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
 
   private
+  def get_time
+    @time = Time.now
+  end
   
   def initialize_visit_counter
     session[:visit_counter] ||= 0
