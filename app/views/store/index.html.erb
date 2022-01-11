@@ -3,7 +3,9 @@
 <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
-
+<% if @visit_count > 5 %>
+  <p class='visit_counter'>You have visited this catalog <%= pluralize  @visit_count, 'time'%></p>
+<% end %>
 <ul class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>
