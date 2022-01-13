@@ -9,6 +9,8 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
+    #prevent user to acces other users Carts!
+    @cart.id = session[:cart_id]
   end
 
   # GET /carts/new
