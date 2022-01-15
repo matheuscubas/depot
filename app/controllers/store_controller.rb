@@ -6,6 +6,6 @@ class StoreController < ApplicationController
   before_action :set_cart
 
   def index
-    @products = Product.order(:title)
+    @products = Product.all.order(:title)
   end
 end
