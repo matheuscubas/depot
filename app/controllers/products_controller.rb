@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
           'products',
           {html: render_to_string('store/index', layout: false), p_id: @product.id},
         )
+        #later i will add method do update line_items.price as well.
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }

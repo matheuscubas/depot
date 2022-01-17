@@ -10,8 +10,10 @@
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
-      <li>
-      <%= image_tag(product.image_url) %>
+      <li id='<%= product.id%>'>
+      <%= form_with url: line_items_path(product_id: product.id), method: :post, local: false do %>
+        <%= image_submit_tag(product.image_url, alt:"#{product.title} book cover" )%>
+      <% end %>
       <h2><%= product.title %></h2>
       <p><%= sanitize(product.description) %></p>
       <div class="price">
