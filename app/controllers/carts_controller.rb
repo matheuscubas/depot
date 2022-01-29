@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show edit update destroy ]
-  before_action :set_line_item
   before_action :get_time
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   # GET /carts or /carts.json
